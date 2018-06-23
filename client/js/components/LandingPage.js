@@ -10,12 +10,6 @@ export default function LandingPage() {
     <Router>
       <div>
         <NavBar />
-        <main>
-          <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/more" component={More} />
-        </main>
       </div>
     </Router>
   );
