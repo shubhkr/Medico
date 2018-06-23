@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     './client/js/index.js',
     'webpack-hot-middleware/client?reload=true'
@@ -14,7 +14,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/.tmp/public'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
+    hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+    hotUpdateMainFilename: '[hash].hot-update.json',
   },
   module: {
     rules: [
