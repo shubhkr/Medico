@@ -32,26 +32,30 @@ module.exports.datastores = {
   *                                                                          *
   ***************************************************************************/
 
-  default: {
+  // appUrl: process.env.APP_URL,
+  // port: process.env.PORT,
+  // environment : process.env.NODE_ENV,
+  // mongodb: {
+  //   adapter: 'sails-mongo',
+  //   url: process.env.MONGO_URL
+  // },
 
-    /***************************************************************************
-    *                                                                          *
-    * Want to use a different database during development?                     *
-    *                                                                          *
-    * 1. Choose an adapter:                                                    *
-    *    https://sailsjs.com/plugins/databases                                 *
-    *                                                                          *
-    * 2. Install it as a dependency of your Sails app.                         *
-    *    (For example:  npm install sails-mysql --save)                        *
-    *                                                                          *
-    * 3. Then pass it in, along with a connection URL.                         *
-    *    (See https://sailsjs.com/config/datastores for help.)                 *
-    *                                                                          *
-    ***************************************************************************/
-    // adapter: 'sails-mysql',
-    // url: 'mysql://user:password@host:port/database',
+  // email: {
+  //   username: process.env.EMAIL_USERNAME,
+  //   password: process.env.EMAIL_PASSWORD,
+  //   host: process.env.EMAIL_HOST,
+  //   port: process.env.EMAIL_PORT,
+  //   secure: process.env.EMAIL_SECURE
+  // },
 
-  },
+  // twilio: {
+  //   accountSid: process.env.TWILIO_ACCOUNT_SID,
+  //   authToken: process.env.TWILIO_AUTH_TOKEN
+  // }
 
+  mongodb: {
+    adapter: 'sails-mongo',
+    url: 'mongodb://shubhambtps:yugioh41@ds129811.mlab.com:29811/medico-111'
+  }
 
 };

@@ -31,12 +31,12 @@ export default class NavBar extends Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['2']}
+              defaultSelectedKeys={['1']}
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1"><Link to="/home">Home</Link></Menu.Item>
-              <Menu.Item key="2"><Link to="/contact">Contact</Link></Menu.Item>
-              <Menu.Item key="3"><Link to="/more">More...</Link></Menu.Item>
+              <Menu.Item key="2"><Link to="/contact">Contact Us</Link></Menu.Item>
+              <Menu.Item key="3"><Link to="/more">Make an appointment</Link></Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '0 50px' }}>

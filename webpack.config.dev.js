@@ -18,6 +18,17 @@ module.exports = {
     hotUpdateChunkFilename: '[id].[hash].hot-update.js',
     hotUpdateMainFilename: '[hash].hot-update.json',
   },
+  resolve: {
+    alias: {},
+    modules: [
+      'web_modules',
+      'node_modules',
+      'assets',
+      'assets/components',
+      'assets/styles',
+    ],
+    extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -55,6 +66,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'client/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 };

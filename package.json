@@ -12,16 +12,22 @@
     "antd": "^3.6.4",
     "async": "2.6.0",
     "bootstrap": "^4.1.1",
+    "emailjs": "^2.1.0",
     "grunt": "1.0.2",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-recaptcha": "^2.3.10",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.0.1",
     "redux-thunk": "^2.2.0",
     "sails": "^1.0.0",
     "sails-hook-grunt": "^3.0.2",
     "sails-hook-orm": "^2.0.0-16",
-    "sails-hook-sockets": "^1.4.0"
+    "sails-hook-sockets": "^1.4.0",
+    "sails-mongo": "^1.0.1",
+    "twilio": "^3.17.5"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3",
@@ -78,11 +84,11 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/sails-react-webpack-4.git"
+    "url": "git://github.com/shubhkr/medico"
   },
-  "author": "anonymous node/sails user",
+  "author": "sks",
   "license": "",
   "engines": {
-    "node": ">=8.10"
+    "node": "8.11.3"
   }
 }

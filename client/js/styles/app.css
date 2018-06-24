@@ -5,3 +5,26 @@
   margin: 16px 24px 16px 0;
   float: left;
 }
+
+.n-registration-form {
+  margin: 50px 0px 0px 0px;
+  padding: 50px;
+  border: 2px;
+  background: #fff;
+}
+
+.hidden {
+	display: none;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}

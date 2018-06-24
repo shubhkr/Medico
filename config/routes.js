@@ -24,6 +24,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'POST /api/app/postFormData': 'AppController.create',
   '/*': {
     controller: 'IndexController',
     action: 'render',
