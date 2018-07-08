@@ -38,14 +38,15 @@ server.listen(port, host, (err) => {
   if (err) {
     console.log('[webpack-dev-server] failed to start: ', err);
   } else {
-    const protocol = 'http';
-    const openHost = host;
-    const suffix = webpackConfig.output.publicPath;
-    const openURL = `${protocol}://${openHost}:${port}/webpack-dev-server${suffix}`;
+    // const protocol = 'http';
+    // const openHost = host;
+    // const suffix = webpackConfig.output.publicPath;
+    // const openURL = `${protocol}://${openHost}:${port}/webpack-dev-server${suffix}`;
 
-    const openMsg = `[webpack-dev-server] started: opening the app: ${openURL}`;
-    console.log(openMsg);
-    opn(openURL);
+    // const openMsg = `[webpack-dev-server] started: opening the app: ${openURL}`;
+    // console.log(openMsg);
+    // opn(openURL);
+    console.log('[webpack-dev-server] started')
   }
 });
 
