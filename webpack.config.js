@@ -49,6 +49,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'views/index.ejs'
+    }),
+    new SaveAssetsJson({
+      path: process.cwd(),
+      filename: 'assets.json',
     })
   ]
 };
