@@ -1,22 +1,28 @@
-import webpack from 'webpack';
+'use strict';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
 const path = require('path');
+const webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  target: 'web',
+
   devtool: 'cheap-module-eval-source-map',
+
   entry: [
     './client/js/index.js'
   ],
+
   output: {
     path: path.join(__dirname, '/public/dist/'),
     filename: 'bundle.js',
+    pathinfo: true,
     publicPath: 'http://localhost:8080/dist/',
     hotUpdateChunkFilename: '[id].[hash].hot-update.js',
     hotUpdateMainFilename: '[hash].hot-update.json',
   },
+
   resolve: {
     alias: {},
     modules: [
@@ -28,6 +34,21 @@ module.exports = {
     ],
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Medico'
+    }),
+    new webpack.DefinePlugin({
+      __ENV__: NODE_ENV,
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
+  ],
   module: {
     rules: [
       {
@@ -60,12 +81,4 @@ module.exports = {
       }
     ]
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'client/index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
 };

@@ -1,18 +1,81 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
+'use strict';
+
 const path = require('path');
+const webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV;
+const SaveAssetsJson = require('assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: {
-    entry: './client/js/index.js'
-  },
+  devtool: '#source-map',
+
+  // Capture timing information for each module
+  profile: false,
+
+  // Switch loaders to debug mode
+  // debug: false,
+
+  // Report the first error as a hard error instead of tolerating it
+  bail: true,
+
+  entry: [
+    './client/js/index.js'
+  ],
+
   output: {
-    path: path.join(__dirname, '/public/dist/'),
+    path: path.resolve(__dirname, 'public/dist/'),
     pathinfo: true,
     publicPath: '/dist/',
     filename: 'bundle.[hash].min.js',
   },
+
+  resolve: {
+    alias: {},
+    modules: [
+      'web_modules',
+      'node_modules',
+      'assets',
+      'assets/components',
+    ],
+    extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
+  },
+
+  resolveLoader: {
+    modules: ["node_modules"],
+  },
+
+  plugins: [
+    new CleanWebpackPlugin(['public/dist'], {
+      verbose: true,
+      dry: false,
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false,
+      },
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+      },
+      mangle: {
+        except: ['$', 'exports', 'require']
+      },
+    }),
+    new SaveAssetsJson({
+      path: process.cwd(),
+      filename: 'assets.json',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
   module: {
     rules: [
       {
@@ -45,14 +108,4 @@ module.exports = {
       }
     ]
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'views/index.ejs'
-    }),
-    new SaveAssetsJson({
-      path: process.cwd(),
-      filename: 'assets.json',
-    })
-  ]
 };
