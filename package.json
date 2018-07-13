@@ -87,18 +87,10 @@
     "url-loader": "^0.5.9"
   },
   "scripts": {
-    "start": "npm-run-all --parallel open:client lift",
-    "start:debug": "npm-run-all --parallel open:client debug",
-    "open:client": "babel-node tools/dev.js",
-    "sails": "node app.js",
-    "build": "npm run build:prod",
-    "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
-    "clean": "rimraf .tmp && mkdirp .tmp/public",
-    "lift": "sails lift",
-    "debug": "node --inspect app.js",
-    "test": "jest -u",
-    "test:watch": "jest --watch"
+    "start": "nf start --wrap",
+    "dev": "node webpackDevServer",
+    "dist": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "postinstall": "npm run dist"
   },
   "jest": {
     "setupFiles": [
