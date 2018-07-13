@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const NODE_ENV = process.env.NODE_ENV;
 const SaveAssetsJson = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   devtool: '#source-map',
@@ -49,22 +50,19 @@ module.exports = {
       verbose: true,
       dry: false,
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false,
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      uglifyOptions: {
+        compress: false,
+        ecma: 6,
+        mangle: true
       },
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-      },
-      mangle: {
-        except: ['$', 'exports', 'require']
-      },
+      sourceMap: true
     }),
     new SaveAssetsJson({
       path: process.cwd(),
