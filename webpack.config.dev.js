@@ -8,13 +8,12 @@ const path = require('path');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    './client/js/index.js',
-    'webpack-hot-middleware/client?reload=true'
+    './client/js/index.js'
   ],
   output: {
-    path: path.join(__dirname, '/.tmp/public'),
+    path: path.join(__dirname, '/public/dist/'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: 'http://localhost:8080/dist/',
     hotUpdateChunkFilename: '[id].[hash].hot-update.js',
     hotUpdateMainFilename: '[hash].hot-update.json',
   },

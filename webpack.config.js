@@ -8,9 +8,10 @@ module.exports = {
     entry: './client/js/index.js'
   },
   output: {
-    path: path.join(__dirname, '/.tmp/public'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: path.join(__dirname, '/public/dist/'),
+    pathinfo: true,
+    publicPath: '/dist/',
+    filename: 'bundle.[hash].min.js',
   },
   module: {
     rules: [
@@ -47,7 +48,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'views/pages/homepage-webpack.ejs'
+      template: 'views/index.ejs'
     })
   ]
 };

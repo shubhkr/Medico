@@ -10,7 +10,7 @@ const compiler = webpack(webpackConfig);
 const serverConfig = {
   contentBase: path.resolve(__dirname, '../client'),
   hot: true,
-  inline: true,
+  noInfo: true,
   stats: {
     colors: true
   },
