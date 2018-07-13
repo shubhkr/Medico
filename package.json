@@ -87,7 +87,7 @@
     "url-loader": "^0.5.9"
   },
   "scripts": {
-    "start": "nf start --wrap",
+    "start": "nf start",
     "dev": "node webpackDevServer",
     "dist": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "postinstall": "npm run dist"
