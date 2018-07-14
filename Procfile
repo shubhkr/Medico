@@ -1,2 +1,2 @@
-backend: PORT=3000 sails lift
+backend: PORT=3000 node --optimize_for_size --max_old_space_size=460 app.js
 frontend: node webpackDevServer

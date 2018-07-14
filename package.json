@@ -92,14 +92,6 @@
     "dist": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "postinstall": "npm run dist"
   },
-  "jest": {
-    "setupFiles": [
-      "./tools/test.js"
-    ],
-    "testMatch": [
-      "<rootDir>/**/*.test.js"
-    ]
-  },
   "main": "app.js",
   "repository": {
     "type": "git",

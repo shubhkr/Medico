@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = 'production';
 const SaveAssetsJson = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
