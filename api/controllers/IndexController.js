@@ -1,11 +1,8 @@
-/**
- * IndexController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
-
 module.exports = {
-  render: (req, res) => res.view('pages/homepage')
+	index: function (req, res) {
+		//res.locals.layout = 'views/layoout.ejs';
+		res.render('index', {
+			NODE_ENV: process.env['NODE_ENV']
+		});
+	}
 };
-
