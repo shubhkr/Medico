@@ -32,6 +32,10 @@ module.exports.connections = {
     adapter: 'sails-disk'
   },
 
+  mongodb: {
+    adapter: 'sails-mongo',
+    url: 'mongodb://shubhambtps:yugioh41@ds129811.mlab.com:29811/medico-111'
+  }
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *

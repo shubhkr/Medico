@@ -32,9 +32,6 @@ var routes = {
 	 ***************************************************************************/
 	
 	// the default sails homepage when creating a new app
-	'/sailshomepage': {
-		view: 'sailshomepage'
-	},
 	
 	/***************************************************************************
 	 *                                                                          *
@@ -45,21 +42,16 @@ var routes = {
 	 * for configuration options and examples.                                  *
 	 *                                                                          *
 	 ***************************************************************************/
-	
-	'post /api/todos': 'TodosController.createTodo',
-	'put /api/todos/:id': 'TodosController.updateTodo',
-	'get /api/todos': 'TodosController.getTodos',
-	'get /api/todos/:id': 'TodosController.getTodo',
-	'delete /api/todos/:id': 'TodosController.deleteTodo',
-	'delete /api/todos': 'TodosController.deleteAll'
+
+	'POST /api/app/postFormData': 'AppController.create'
 	
 };
 
 // the same app will be rendered at all these routes
 var indexRoutes = ['/',
-	'/todos',
-	'/page1',
-	'/page2'];
+	'/home',
+	'/contact',
+	'/more'];
 indexRoutes.forEach(function (r) {
 	routes['GET ' + r] = 'IndexController.index';
 });
