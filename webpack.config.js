@@ -32,9 +32,6 @@ const config = {
 	 },
 	 */
 	plugins: [],
-	externals: {
-    reactstrap: 'Reactstrap'
-  },
 	module: {
 		loaders: [{
 			test: /\.js$/,
