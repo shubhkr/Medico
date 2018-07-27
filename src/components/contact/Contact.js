@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, Button } from 'Reactstrap';
+import { Jumbotron, Button } from 'reactstrap';
 
 const Contact = () => (
     <div>
