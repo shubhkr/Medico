@@ -34,7 +34,17 @@ module.exports.connections = {
 
   mongodb: {
     adapter: 'sails-mongo',
-    url: 'mongodb://shubhambtps:yugioh41@ds129811.mlab.com:29811/medico-111'
+    url: process.env.MONGODB_URL
+  },
+
+  mailer: {
+    host: process.env.HOST || 'smtp.gmail.com',
+    port: process.env.PORT || 465,
+    secure: process.env.SECURE || true,
+    auth: {
+      user: process.env.USER,
+      pass: process.env.PASS
+    } 
   }
   /***************************************************************************
   *                                                                          *

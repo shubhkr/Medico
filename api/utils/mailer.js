@@ -4,16 +4,9 @@ const nodemailer = require('nodemailer');
 module.exports = {
    sendMail: function(email) {
       console.log(email)
+      console.log(sails.config.connections.mailer)
       // create reusable transporter object using the default SMTP transport
-      let transporter = nodemailer.createTransport({
-        host: process.env.HOST,
-        port: process.env.PORT,
-        secure: process.env.SECURE, // true for 465, false for other ports
-        auth: {
-            user: process.env.USER, // generated ethereal user
-            pass: process.env.PASS // generated ethereal password
-        }
-      });
+      let transporter = nodemailer.createTransport(sails.config.connections.mailer);
 
       // setup email data with unicode symbols
       let mailOptions = {
