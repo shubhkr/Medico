@@ -43,7 +43,7 @@ module.exports.connections = {
     secure: process.env.SECURE || true,
     auth: {
       user: process.env.USER,
-      pass: process.env.PASS
+      pass: process.env.PASSWORD
     } 
   }
   /***************************************************************************
