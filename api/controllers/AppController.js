@@ -5,10 +5,13 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+var mailer = require('../utils/mailer')
+
 module.exports = {
   create: function(req, res) {
     var Model = sails.models.app
       , body = req.body || {}
+      , email = body.email || ''
 
 		Model.create(body)
 		.exec(function (err) {
@@ -20,7 +23,8 @@ module.exports = {
 		    return res.serverError(err);
 		  }
 
-		  return res.ok();
+		 	mailer.sendMail(email)
+		  return res.json({'success': true});
 		});
   }
 };

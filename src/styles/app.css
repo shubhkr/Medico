@@ -17,6 +17,10 @@
 	display: none;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .ant-carousel .slick-slide {
   text-align: center;
   height: 200px;

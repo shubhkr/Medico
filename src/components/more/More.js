@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Tooltip, Radio, Icon, DatePicker, TimePicker, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input, Tooltip, notification, Radio, Icon, DatePicker, TimePicker, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 var Recaptcha = require('react-recaptcha');
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -30,15 +30,33 @@ const residences = [{
       value: 'gandhi chowk',
       label: 'Gandhi Chowk',
     }],
+  },{
+    value: 'tinsukia local',
+    label: 'Tinsukia Local',
   }],
 }];
+
+const openNotificationWithIcon = (type) => {
+  if (type === 'success') {
+    notification[type]({
+      message: 'Appointment Confirmed',
+      description: 'Thank you for the booking. Someone from our office will be in touch with you very soon.',
+    });
+  } else if(type === 'error') {
+    notification[type]({
+      message: 'Appointment Booking Failed',
+      description: 'Something bad happend!! Please reload the page and try again.',
+    });
+  }
+};
 
 class RegistrationForm extends React.Component {
   state = {
     checked: false,
     confirmDirty: false,
     autoCompleteResult: [],
-    captchaVerified: false
+    loading: false,
+    iconLoading: false
   }
 
   handleSubmit = (e) => {
@@ -60,20 +78,33 @@ class RegistrationForm extends React.Component {
           body: value,
           callback: this.onFormDataPostComplete
         });
+      } else {
+        this.setState({
+          loading: false
+        })
       }
     });
   };
 
-  onFormDataPostComplete = (res) => {
-    console.log('Data posted successfully')
+  onFormDataPostComplete = (err, res) => {
+    this.setState({
+      loading: false
+    })
+    if (err) {
+      openNotificationWithIcon('error')
+    } else {
+      $('.form-submit-button').attr('disabled', true)
+      openNotificationWithIcon('success')
+    }
   }
 
   googleResponseCallback = (res) => {
-    this.setState({
-      captchaVerified: true
-    })
-    $('.ant-checkbox').click()
+    $('.ant-checkbox-input').click()
   };
+
+  enterLoading = () => {
+    this.setState({ loading: true });
+  }
 
   handleConfirmBlur = (e) => {
     const value = e.target.value;
@@ -121,6 +152,8 @@ class RegistrationForm extends React.Component {
     const rangeConfig = {
       rules: [{ type: 'array', required: true, message: 'Please select time!' }],
     };
+
+    window.googleResponseCallback = this.googleResponseCallback;
 
     return (
       <div className="n-appointment-form">
@@ -243,9 +276,21 @@ class RegistrationForm extends React.Component {
               e.g. I am sensitive to this particular medicine."/>
             )}
           </FormItem>
-
+          <FormItem
+            {...formItemLayout}
+            label="Captcha"
+          >
+            {getFieldDecorator('input', {
+              rules: [{ required: true, message: 'Please input the captcha you got!' }],
+            })(
+            <div>
+              <Checkbox className="hidden"></Checkbox>
+              <div className="g-recaptcha" data-sitekey="6LdVzmIUAAAAAJCgqfrdJTH9kiWfMHFZcyAiCYOb" data-callback="googleResponseCallback"></div>
+            </div>
+            )}
+          </FormItem>
           <FormItem {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">Make an appointment</Button>
+            <Button type="primary" className="form-submit-button" onClick={this.enterLoading} loading={this.state.loading} htmlType="submit">Make an appointment</Button>
           </FormItem>
         </Form>
       </div>
