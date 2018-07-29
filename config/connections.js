@@ -40,7 +40,7 @@ module.exports.connections = {
   mailer: {
     host: process.env.HOST || 'smtp.gmail.com',
     port: process.env.PORT || 465,
-    secure: process.env.SECURE || true,
+    secure: (process.env.SECURE === 'true') || true,
     auth: {
       user: process.env.USER,
       pass: process.env.PASSWORD
