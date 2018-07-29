@@ -24,6 +24,7 @@
 		"express-ejs-layouts": "^2.2.0",
 		"ghoulie": "0.0.2",
 		"ghoulies": "0.0.2",
+		"google-map-react": "^1.0.5",
 		"googleapis": "^22.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-clean": "1.0.0",

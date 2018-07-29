@@ -111,6 +111,17 @@ class RegistrationForm extends React.Component {
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
 
+  componentDidMount(){
+    setTimeout(() =>{
+      window.grecaptcha.render('recaptcha', {
+         sitekey: "6LdVzmIUAAAAAJCgqfrdJTH9kiWfMHFZcyAiCYOb",
+         callback: function(resp){
+          console.log('callback called')
+         }
+      });
+    },300);
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
@@ -285,7 +296,7 @@ class RegistrationForm extends React.Component {
             })(
             <div>
               <Checkbox className="hidden"></Checkbox>
-              <div className="g-recaptcha" data-sitekey="6LdVzmIUAAAAAJCgqfrdJTH9kiWfMHFZcyAiCYOb" data-callback="googleResponseCallback"></div>
+              <div id="recaptcha" className="g-recaptcha" data-sitekey="6LdVzmIUAAAAAJCgqfrdJTH9kiWfMHFZcyAiCYOb" data-callback="googleResponseCallback"></div>
             </div>
             )}
           </FormItem>

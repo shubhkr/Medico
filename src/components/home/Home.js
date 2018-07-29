@@ -13,8 +13,7 @@ const Home = () => (
         </Carousel>
         <hr className="my-2" />
         <p>
-          It uses utility classes for typgraphy and spacing to space content out within the larger
-          container.
+          Need to add proper text over here.
         </p>
         <p className="lead">
           <Button color="primary">Learn More</Button>
