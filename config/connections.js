@@ -44,7 +44,8 @@ module.exports.connections = {
     auth: {
       user: process.env.USER,
       pass: process.env.PASSWORD
-    } 
+    },
+    sendGridKey: process.env.SENDGRID_KEY
   }
   /***************************************************************************
   *                                                                          *
